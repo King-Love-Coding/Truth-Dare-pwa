@@ -18,17 +18,19 @@ body {
 
 .game-container {
   display: grid;
-  grid-template-columns: repeat(3, 150px); /* Default for desktop */
+  grid-template-columns: repeat(3, 1fr); /* 3 cards per row on desktop */
   gap: 20px;
   justify-content: center;
   margin-bottom: 20px;
 }
 
 .card {
-  width: 150px;
-  height: 200px;
-  perspective: 1000px;
+  width: 100%;
+  height: 200px; /* Fixed height for the card */
+  max-width: 150px; /* Limit the maximum width for larger screens */
+  perspective: 1000px; /* Apply perspective for the 3D flip effect */
   position: relative;
+  margin: 0 auto;
 }
 
 .card-inner {
@@ -39,7 +41,8 @@ body {
   position: relative;
 }
 
-.card-front, .card-back {
+.card-front,
+.card-back {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -52,8 +55,13 @@ body {
 
 .card-front {
   background-color: red;
-  font-size: 24px;
+  font-size: 36px; /* Bigger font for visibility */
   font-weight: bold;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
 }
 
 .card-back {
@@ -83,14 +91,15 @@ body {
 }
 
 .card-inner.flipped {
-  transform: rotateY(180deg);
+  transform: rotateY(180deg); /* Flip the card */
 }
 
 .controls {
   margin: 20px 0;
 }
 
-.controls input, .controls button {
+.controls input,
+.controls button {
   padding: 10px;
   font-size: 16px;
   margin: 5px;
@@ -108,7 +117,8 @@ body {
   background-color: #2980b9;
 }
 
-#next-turn, #skip-turn {
+#next-turn,
+#skip-turn {
   background-color: yellow;
   color: black;
   font-size: large;
@@ -119,12 +129,13 @@ body {
   margin: 10px;
 }
 
-#next-turn:hover, #skip-turn:hover {
+#next-turn:hover,
+#skip-turn:hover {
   background-color: red;
 }
 
 #complete-penalty {
-  background-color: darkblue; 
+  background-color: darkblue;
   color: yellow;
   font-size: 16px;
   padding: 10px 20px;
@@ -137,90 +148,54 @@ body {
 }
 
 #complete-penalty:hover {
-  background-color: green; 
+  background-color: green;
 }
 
 #complete-penalty:focus {
   outline: none; /* Removes the focus outline */
 }
 
-/* Mobile responsiveness */
+/* Mobile adjustments */
 @media (max-width: 768px) {
-  /* Adjust the game container for mobile (single column layout) */
   .game-container {
-    grid-template-columns: 1fr; /* 1 column for mobile */
-    gap: 10px;
-    padding: 0 10px;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens like tablets */
   }
 
-  /* Adjust card sizes */
   .card {
-    width: 100%; /* Full width for cards on mobile */
-    height: auto;
+    max-width: 120px; /* Smaller cards for medium screens */
+    height: 180px; /* Adjust card height for mobile */
   }
 
-  /* Adjust font sizes for the cards */
-  .card-front {
-    font-size: 20px;
-  }
-
-  .card-back {
-    font-size: 16px;
-  }
-
-  /* Adjust font size for headings */
-  h1 {
-    font-size: 1.5em;
-  }
-
-  /* Make buttons bigger and more touch-friendly */
-  .controls input, .controls button {
-    padding: 12px;
-    font-size: 14px;
-    width: 100%;
-  }
-
-  /* Adjust size of action buttons */
-  #next-turn, #skip-turn {
-    width: 100%; /* Full width for mobile */
-    height: 50px;
-    font-size: 1.2em;
-  }
-
-  /* Adjust the complete penalty button */
+  #next-turn,
+  #skip-turn,
   #complete-penalty {
-    width: 100%;
-    font-size: 1.2em;
+    width: 80%;
+    height: 50px;
+    font-size: 18px;
   }
 }
 
-/* For smaller devices like phones */
 @media (max-width: 480px) {
-  body {
-    padding: 10px;
+  .game-container {
+    grid-template-columns: 1fr; /* 1 column layout for very small screens */
   }
 
-  h1 {
-    font-size: 1.2em;
+  .card {
+    max-width: 100%;
+    height: 150px; /* Adjust card height for mobile */
   }
 
-  .card-front {
+  .controls input,
+  .controls button {
+    width: 100%; /* Full width controls */
     font-size: 18px;
   }
 
-  .card-back {
-    font-size: 14px;
-  }
-
-  /* Make buttons even larger for smaller devices */
-  .controls input, .controls button {
-    padding: 15px;
-    font-size: 16px;
-  }
-
-  /* Adjust the width of cards and buttons */
-  #next-turn, #skip-turn, #complete-penalty {
-    width: 100%;
-    font-size: 1em;
+  #next-turn,
+  #skip-turn,
+  #complete-penalty {
+    width: 90%;
+    height: 60px;
+    font-size: 20px;
   }
 }
