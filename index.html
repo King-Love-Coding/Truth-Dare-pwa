@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Truth, Dare, Situation Game</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+
+</head>
+<body>
+  <div class="header">
+    <h1>Truth, Dare, Situation</h1>
+    <p>Challenge your friends and have fun!</p>
+  </div>
+
+  <div class="game-container">
+    <!-- Cards -->
+    <div class="card" data-card-number="1">
+      <div class="card-inner">
+        <div class="card-front">1</div>
+        <div class="card-back"></div>
+      </div>
+    </div>
+
+    <div class="card" data-card-number="2">
+      <div class="card-inner">
+        <div class="card-front">2</div>
+        <div class="card-back"></div>
+      </div>
+    </div>
+
+    <div class="card" data-card-number="3">
+      <div class="card-inner">
+        <div class="card-front">3</div>
+        <div class="card-back"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <div class="controls">
+    <label for="player-name">Player Name: </label>
+    <input type="text" id="player-name" placeholder="Enter your name">
+    <label for="card-number">Choose a card: </label>
+    <input type="number" id="card-number" min="1" max="3">
+    <button id="start-turn">Start Turn</button>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p id="message"></p>
+    <button id="next-turn" style="display: none;">Next Turn</button>
+    <button id="skip-turn" style="display: none;">Skip Turn</button>
+  </div>
+
+  <script src="script.js"></script>
+  <script>if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('service-worker.js').then((registration) => {
+        console.log('Service Worker registered with scope:', registration.scope);
+      }).catch((error) => {
+        console.log('Service Worker registration failed:', error);
+      });
+    });
+  }
+  </script>
+
+
+</body>
+</html>
+
