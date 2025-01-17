@@ -18,7 +18,7 @@ body {
 
 .game-container {
   display: grid;
-  grid-template-columns: repeat(3, 150px);
+  grid-template-columns: repeat(3, 150px); /* Default for desktop */
   gap: 20px;
   justify-content: center;
   margin-bottom: 20px;
@@ -51,7 +51,7 @@ body {
 }
 
 .card-front {
-  background-color:red;
+  background-color: red;
   font-size: 24px;
   font-weight: bold;
 }
@@ -82,7 +82,6 @@ body {
   margin: 0;
 }
 
-
 .card-inner.flipped {
   transform: rotateY(180deg);
 }
@@ -109,28 +108,19 @@ body {
   background-color: #2980b9;
 }
 
-#next-turn {
-  background-color:yellow;
-  color:black;
+#next-turn, #skip-turn {
+  background-color: yellow;
+  color: black;
   font-size: large;
   font-weight: bold;
   cursor: pointer;
   width: 100px;
   height: 40px;
+  margin: 10px;
 }
 
-#next-turn:hover {
-  background-color:red;
-}
-
-#skip-turn {
-  background-color:yellow;
-  color:black;
-  font-size: large;
-  font-weight: bold;
-  cursor: pointer;
-  width: 100px;
-  height: 40px;
+#next-turn:hover, #skip-turn:hover {
+  background-color: red;
 }
 
 #complete-penalty {
@@ -147,10 +137,90 @@ body {
 }
 
 #complete-penalty:hover {
-  background-color:green; 
+  background-color: green; 
 }
 
 #complete-penalty:focus {
   outline: none; /* Removes the focus outline */
 }
 
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  /* Adjust the game container for mobile (single column layout) */
+  .game-container {
+    grid-template-columns: 1fr; /* 1 column for mobile */
+    gap: 10px;
+    padding: 0 10px;
+  }
+
+  /* Adjust card sizes */
+  .card {
+    width: 100%; /* Full width for cards on mobile */
+    height: auto;
+  }
+
+  /* Adjust font sizes for the cards */
+  .card-front {
+    font-size: 20px;
+  }
+
+  .card-back {
+    font-size: 16px;
+  }
+
+  /* Adjust font size for headings */
+  h1 {
+    font-size: 1.5em;
+  }
+
+  /* Make buttons bigger and more touch-friendly */
+  .controls input, .controls button {
+    padding: 12px;
+    font-size: 14px;
+    width: 100%;
+  }
+
+  /* Adjust size of action buttons */
+  #next-turn, #skip-turn {
+    width: 100%; /* Full width for mobile */
+    height: 50px;
+    font-size: 1.2em;
+  }
+
+  /* Adjust the complete penalty button */
+  #complete-penalty {
+    width: 100%;
+    font-size: 1.2em;
+  }
+}
+
+/* For smaller devices like phones */
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.2em;
+  }
+
+  .card-front {
+    font-size: 18px;
+  }
+
+  .card-back {
+    font-size: 14px;
+  }
+
+  /* Make buttons even larger for smaller devices */
+  .controls input, .controls button {
+    padding: 15px;
+    font-size: 16px;
+  }
+
+  /* Adjust the width of cards and buttons */
+  #next-turn, #skip-turn, #complete-penalty {
+    width: 100%;
+    font-size: 1em;
+  }
+}
